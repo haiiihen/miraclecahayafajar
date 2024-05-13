@@ -30,6 +30,11 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('/webpage/css/style.css')}}" rel="stylesheet">
 
+    <!-- boostrap  -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <!-- style  -->
     <style>
         /* style for navnav same as height container fluid */
@@ -41,15 +46,22 @@
 </head>
     @include('webpage.layouts.navbar')
 
+    <!-- yield style  -->
+    @yield('style')
+
     <main>
         @yield('content')
     </main>
+
 
     @include('webpage.layouts.footer')
 
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a> -->
+
+    <!-- WhatsApp Chat -->
+    <a href="https://wa.me/6282229920299?text=Hi Admin Vanilla Papua Indonesia, my name is $name and $message." class="btn btn-lg btn-primary btn-lg-square rounded-circle chat-whatsapp"><i class="bi bi-whatsapp"></i></a>
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -61,5 +73,8 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('/webpage/js/main.js') }}"></script>
+
+    <!-- yield script  -->
+    @yield('script')
 </body>
 </html>

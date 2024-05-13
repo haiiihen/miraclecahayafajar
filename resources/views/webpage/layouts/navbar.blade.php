@@ -36,16 +36,21 @@
                     </div> -->
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto">
-                            <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
+                            <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->is('home') ? 'active' : '' }}">Home</a>
                             <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
                             <a href="{{ route('products') }}" class="nav-item nav-link {{ request()->is('products') ? 'active' : '' }}">Products</a>
                             <a href="{{ route('articles') }}" class="nav-item nav-link {{ request()->is('articles') ? 'active' : '' }}">Articles</a>
                             <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
+                            @if (Auth::check())
+                                <a href="{{ route('logout') }}" class="nav-item nav-link">Logout</a>
+                            @else
+                                <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
+                            @endif
                         </div>
                     </div>
-                    <div class="border-start ps-4 d-none d-lg-block">
+                    <!-- <div class="border-start ps-4 d-none d-lg-block">
                         <button type="button" class="btn btn-sm p-0"><i class="fa fa-search"></i></button>
-                    </div>
+                    </div> -->
                 </div>
             </nav>
         </div>

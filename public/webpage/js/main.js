@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -24,8 +24,8 @@
             $('.sticky-top').removeClass('shadow-sm').css('top', '-150px');
         }
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -38,6 +38,16 @@
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
+
+    // chat-whatsapp
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.chat-whatsapp').fadeIn('slow');
+        } else {
+            $('.chat-whatsapp').fadeOut('slow');
+        }
+    });
+
 
 
     // Modal Video
@@ -93,6 +103,6 @@
         dots: true,
         nav: false,
     });
-    
+
 })(jQuery);
 
