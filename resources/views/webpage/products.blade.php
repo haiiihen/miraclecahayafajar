@@ -17,9 +17,9 @@
             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Add More Product
             </button> -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Add More Product</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_add_product">Add More Product</button>
             <!-- modal up  -->
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal fade bd-example-modal-lg" id="modal_add_product" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -30,15 +30,15 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="image" class="col-form-label">Image :</label>
-                            <input type="file" class="form-control" id="image">
+                            <input type="file" class="form-control" id="image" name="product_image">
                         </div>
                         <div class="form-group">
                             <label for="product_name" class="col-form-label">Product Name :</label>
-                            <input type="text" class="form-control" id="product_name">
+                            <input type="text" class="form-control" id="product_name" name="product_name">
                         </div>
                         <div class="form-group">
                             <label for="product_description" class="col-form-label">Description :</label>
-                            <textarea class="form-control" id="product_description" row="15"></textarea>
+                            <textarea class="form-control" id="product_description" row="15" name="product_description"></textarea>
                         </div>
                         </form>
                     </div>
@@ -58,9 +58,41 @@
                     <!-- add button edit  -->
                     @if (auth()->check() && auth()->user()->name === 'admin')
                     <!-- button edit redirect to modal  -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_edit_product">
                         Edit
                     </button>
+                    <!-- modal up  -->
+                    <div class="modal fade bd-example-modal-lg" id="modal_add_product" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form id="add_product" method="POST" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label for="image" class="col-form-label">Image :</label>
+                                    <input type="file" class="form-control" id="image" name="product_image">
+                                </div>
+                                <div class="form-group">
+                                    <label for="product_name" class="col-form-label">Product Name :</label>
+                                    <input type="text" class="form-control" id="product_name" name="product_name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="product_description" class="col-form-label">Description :</label>
+                                    <textarea class="form-control" id="product_description" row="15" name="product_description"></textarea>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a id="save_add_button" type="button" class="btn btn-primary">Save</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- end modal  -->
                     <!-- delete button -->
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" href="{{ route('product.delete', $product->id) }}">
                         Delete

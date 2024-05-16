@@ -14,10 +14,21 @@ class ProductController extends Controller
         return view('webpage/products', ['products' => $products]);
     }
 
-    public function addProduct()
-    {
+    // public function addProduct(Request $request)
+    // {
+    //     $product_name = $request->product_name;
+    //     $product_description = $request->product_description;
+    //     // $image = has file 
+    //     if($request->hasfile('image')) {
+    //         $file = $request->file('image');
+    //         $extension = $file->getClientOriginalExtension();
+    //         $filename = time(). '.' . $extension;
+    //         $file->move('images/', $filename);
+    //     }
 
-    }
+    //     $product = new Product();
+    //     $product->title_content = $product_name;
+    // }
 
     public function store(Request $request)
     {
@@ -65,7 +76,12 @@ class ProductController extends Controller
 
     public function delete($id)
     {
+        $product = Product::find($id);
+        $product->delete();
 
+        return response()->json([
+            'success' => 'Product deleted successfully';
+        ]);
     }
 
     public function detail($id)
