@@ -25,6 +25,7 @@ use App\Http\Controllers\ContactController;
 
 // guest routes
 Route::get('/home', [WebPageController::class, 'home'])->name('home');
+Route::get('/', [WebPageController::class, 'home'])->name('home');
 Route::get('/about', [AboutController::class, 'getContent'])->name('about');
 // Route::get('/products', [ProductController::class, 'getProducts'])->name('products');
 // Route::get('/articles', [WebPageController::class, 'articles'])->name('articles');
@@ -32,9 +33,8 @@ Route::get('/about', [AboutController::class, 'getContent'])->name('about');
 // group route for products
 Route::group(['prefix' => 'products'], function () {
     Route::get('/', [ProductController::class, 'getProducts'])->name('products');
-    Route::get('/add', [ProductController::class, 'addProduct'])->name('product.add');
-    Route::post('/store', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/edit/{id}', [ProductController::class, 'editProduct'])->name('edit.product');
+    Route::post('/add', [ProductController::class, 'addProduct'])->name('product.add');
+    Route::get('/edit/{id}', [ProductController::class, 'editProduct'])->name('product.edit');
     Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
     Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('product.detail');
